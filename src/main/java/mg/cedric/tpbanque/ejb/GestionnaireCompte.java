@@ -45,9 +45,15 @@ public class GestionnaireCompte {
         em.persist(newAccount);
     }
     
-    List<CompteBancaire> getAllComptes() {
+    public List<CompteBancaire> getAllComptes() {
         TypedQuery<CompteBancaire> query = em.createNamedQuery("CompteBancaire.findAll" , CompteBancaire.class);
         return query.getResultList(); 
-    } 
+    }
+    
+    public Long nbComptes(){
+        String req = "select count(c) from CompteBancaire c";
+        TypedQuery<Long> query = em.createQuery(req , Long.class);
+        return query.getSingleResult();
+    }
 
 }
