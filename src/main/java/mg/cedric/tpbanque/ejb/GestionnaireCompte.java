@@ -6,6 +6,11 @@ package mg.cedric.tpbanque.ejb;
 
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
+import java.util.List;
+import mg.cedric.tpbanque.entities.CompteBancaire;
 
 /**
  *
@@ -28,4 +33,20 @@ import jakarta.ejb.Stateless;
 @Stateless
 public class GestionnaireCompte {
     
+    @PersistenceContext(unitName = "banquePU")
+    private EntityManager em;
+
+    /*public void persist(Customer customer) {
+      
+    }*/
+    
+    public void creerCompte(CompteBancaire newAccount) {
+        em.persist(newAccount);
+    }
+    
+    List<CompteBancaire> getAllComptes() {
+        Query query = em.createNamedQuery("CompteBancaire.findAll");
+        return query.getResultList(); 
+    } 
+
 }
