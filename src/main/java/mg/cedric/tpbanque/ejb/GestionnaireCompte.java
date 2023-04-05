@@ -9,6 +9,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import java.util.List;
 import mg.cedric.tpbanque.entities.CompteBancaire;
 
@@ -45,7 +46,7 @@ public class GestionnaireCompte {
     }
     
     List<CompteBancaire> getAllComptes() {
-        Query query = em.createNamedQuery("CompteBancaire.findAll");
+        TypedQuery<CompteBancaire> query = em.createNamedQuery("CompteBancaire.findAll" , CompteBancaire.class);
         return query.getResultList(); 
     } 
 
