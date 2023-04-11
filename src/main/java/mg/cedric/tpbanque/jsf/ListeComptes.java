@@ -16,9 +16,9 @@ import mg.cedric.tpbanque.entities.CompteBancaire;
  *
  * @author CEDRIC
  */
-@Named(value = "compteBean")
+@Named(value = "listCompteBean")
 @ViewScoped
-public class CompteBean implements Serializable {
+public class ListeComptes implements Serializable {
     
     @EJB
     private GestionnaireCompte compteManager;
@@ -27,7 +27,7 @@ public class CompteBean implements Serializable {
     /**
      * Creates a new instance of CompteBean
      */
-    public CompteBean() {
+    public ListeComptes() {
     }
     
     public List<CompteBancaire> getAllComptes() {
