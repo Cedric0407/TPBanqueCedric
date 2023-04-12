@@ -9,7 +9,7 @@
     <body>
 
         <ui:composition template="./WEB-INF/templates/template_default.xhtml">
-            
+
             <ui:param name="title" value="Liste des comptes"/>
 
             <ui:define name="top">
@@ -42,7 +42,7 @@
                             <f:facet name="header">
                                 <h:outputText value="Id"/>
                             </f:facet>
-                            <h:outputText value="#{item.id}"/>
+                            <h:link outcome="mouvement?id=#{item.id}" value="#{item.id}"/>
                         </p:column>
                         <p:column sortBy="#{item.nom}" filterBy="#{item.nom}">
                             <f:facet name="header">
@@ -58,10 +58,10 @@
                         </p:column>
                     </p:dataTable>
 
-                    
+
 
                 </h:form>
-                
+
             </ui:define>
 
         </ui:composition>
