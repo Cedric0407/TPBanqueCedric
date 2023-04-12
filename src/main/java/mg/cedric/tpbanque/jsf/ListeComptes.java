@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 import mg.cedric.tpbanque.ejb.GestionnaireCompte;
 import mg.cedric.tpbanque.entities.CompteBancaire;
+import mg.cedric.tpbanque.jsf.util.Util;
 
 /**
  *
@@ -19,7 +20,7 @@ import mg.cedric.tpbanque.entities.CompteBancaire;
 @Named(value = "listCompteBean")
 @ViewScoped
 public class ListeComptes implements Serializable {
-    
+
     @EJB
     private GestionnaireCompte compteManager;
     private List<CompteBancaire> allComptes;
@@ -29,12 +30,18 @@ public class ListeComptes implements Serializable {
      */
     public ListeComptes() {
     }
-    
+
     public List<CompteBancaire> getAllComptes() {
         if (allComptes == null) {
-          allComptes = compteManager.getAllComptes();
+            allComptes = compteManager.getAllComptes();
         }
         return allComptes;
     }
-    
+
+    public String supprimerCompte(CompteBancaire compteBancaire) {
+        compteManager.supprimerCompte(compteBancaire);
+        Util.addFlashInfoMessage("Compte de " + compteBancaire.getNom() + " supprimé");
+        return "listeComptes?faces-redirect=true";
+    }
+
 }
