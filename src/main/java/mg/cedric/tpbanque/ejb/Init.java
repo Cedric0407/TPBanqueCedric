@@ -14,8 +14,8 @@ import mg.cedric.tpbanque.entities.CompteBancaire;
  *
  * @author CEDRIC
  */
-@Singleton
-@Startup
+//@Singleton
+//@Startup
 public class Init {
     
     @EJB
